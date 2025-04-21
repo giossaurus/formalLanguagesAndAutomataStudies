@@ -1,0 +1,119 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{verbatim}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Anotações — Sintaxe e Semântica}
+\author{Disciplina: Linguagens Formais e Autômatos\\Professores: José Rui e Thiago Augusto de Oliveira}
+\date{26 de fevereiro de 2025}
+
+\begin{document}
+
+\maketitle
+
+\section*{O que é uma linguagem formal?}
+\begin{itemize}
+    \item Desenvolvida na década de 1950.
+    \item Estuda e desenvolve teorias relacionadas à linguagem natural.
+    \item Inclinou-se para as linguagens artificiais como C, Pascal, etc.
+    \item Engloba as linguagens ordinárias da ciência da computação.
+\end{itemize}
+
+\section*{Qual o enfoque maior?}
+O maior enfoque foi em aplicações de análise léxica e análise sintática.
+
+\section*{Exemplos de linguagens formais}
+\begin{itemize}
+    \item Linguagens de programação
+    \item Linguagens naturais
+    \item Expressões matemáticas
+    \item Circuitos digitais
+\end{itemize}
+
+\section*{Diferença entre sintaxe e semântica}
+
+A \textbf{sintaxe} é a parte da gramática que estuda a disposição das palavras na frase e das frases no discurso, bem como a \textbf{relação lógica} entre elas.
+
+\subsection*{Exemplos sintaticamente corretos:}
+\begin{itemize}
+    \item José bebeu água.
+    \item Maria acabou a prova.
+    \item As flores são belas.
+\end{itemize}
+
+\begin{verbatim}
+if (a < 10) then
+A = 45;
+\end{verbatim}
+
+\subsection*{Exemplos sintaticamente incorretos:}
+\begin{itemize}
+    \item Água bebeu José.
+    \item A prova acabou Maria.
+    \item As flores é bela (erro de concordância).
+\end{itemize}
+
+\begin{verbatim}
+then (a < 10) if
+45 = a;
+\end{verbatim}
+
+\section*{Erros semânticos}
+
+Um erro semântico pode alterar completamente o sentido da frase.  
+A ordem de análise é:
+
+\[
+\text{Análise léxica} \rightarrow \text{Análise sintática} \rightarrow \text{Análise semântica}
+\]
+
+\textbf{Exemplos:}
+\begin{itemize}
+    \item Eu caminho todos os dias. \hfill (\textit{caminho = ato de andar})
+    \item O caminho é longo. \hfill (\textit{caminho = estrada})
+    \item Vou colher flores. \hfill (\textit{colher = verbo})
+    \item A colher caiu no chão. \hfill (\textit{colher = objeto})
+    \item int soma \hfill (\textit{inteiro})
+    \item float soma \hfill (\textit{número real})
+    \item class soma \hfill (\textit{tipo abstrato})
+\end{itemize}
+
+\section*{Paralelo entre sintaxe e semântica}
+
+\begin{itemize}
+    \item \textbf{Sintaxe:}
+    \begin{itemize}
+        \item Reconhecida antes da semântica.
+        \item Estrutura matemática bem definida (Gramáticas de Chomsky).
+        \item \textit{Livre} — manipula símbolos sem significados.
+    \end{itemize}
+    
+    \item \textbf{Semântica:}
+    \begin{itemize}
+        \item Analisada após a sintática.
+        \item Exige interpretações (mais subjetiva).
+        \item \textit{Associada} — há um significado atrelado.
+    \end{itemize}
+\end{itemize}
+
+\section*{Vocabulário inicial da disciplina}
+
+\begin{itemize}
+    \item \textbf{Programa sintaticamente errado:}
+    \begin{itemize}
+        \item O texto escrito \textit{não é aceito pela linguagem}.
+        \item Exemplo: erro de compilação.
+    \end{itemize}
+    
+    \item \textbf{Programa sintaticamente correto:}
+    \begin{itemize}
+        \item O texto é \textit{aceito pela linguagem}.
+        \item Pode não fazer o que o programador queria (bug).
+        \item É \textit{sintaticamente válido}, mas possivelmente semanticamente incorreto.
+    \end{itemize}
+\end{itemize}
+
+\end{document}
