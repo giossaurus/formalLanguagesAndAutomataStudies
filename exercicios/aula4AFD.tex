@@ -1,0 +1,115 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Exercícios sobre Autômato Finito Determinístico (AFD) propostos pelo Prof. José Rui na aula LFA04}
+\author{Giovanni Della Déa}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Definição do Autômato Finito Determinístico (AFD)}
+
+\begin{itemize}
+    \item \textbf{Estados:} $\{q_0, q_1, q_2, q_f\}$
+    \item \textbf{Alfabeto:} $\{a, b\}$
+    \item \textbf{Estado inicial:} $q_0$
+    \item \textbf{Estado(s) de aceitação:} $q_f$
+\end{itemize}
+
+\subsection*{Diagrama do AFD}
+
+\begin{center}
+\begin{tikzpicture}[>=stealth, node distance=2.5cm]
+
+  % Estados
+  \node[draw, circle, initial] (q0) {$q_0$};
+  \node[draw, circle] (q1) [below left=of q0] {$q_1$};
+  \node[draw, circle] (q2) [below right=of q0] {$q_2$};
+  \node[draw, double, circle] (qf) [below right=of q1] {$q_f$};
+
+  % Transições
+  \draw[->] (q0) -- node[left] {a} (q1);
+  \draw[->] (q0) -- node[right] {b} (q2);
+  \draw[->] (q1) edge[loop left] node {b} (q1);
+  \draw[->] (q1) -- node[left] {a} (qf);
+  \draw[->] (q2) -- node[right] {a} (q1);
+  \draw[->] (q2) -- node[right] {b} (qf);
+  \draw[->] (qf) edge[loop below] node {a,b} (qf);
+
+\end{tikzpicture}
+\end{center}
+\subsection*{Tabela de Transição}
+
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+\textbf{Estado} & \textbf{a} & \textbf{b} \\
+\midrule
+$q_0$ & $q_1$ & $q_2$ \\
+$q_1$ & $q_f$ & $q_1$ \\
+$q_2$ & $q_1$ & $q_f$ \\
+$q_f$ & $q_f$ & $q_f$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{Simulações de Cadeias}
+
+\subsection*{1. Cadeia: \texttt{ababaaab}}
+
+\begin{lstlisting}
+q0 --a--> q1
+q1 --b--> q1
+q1 --a--> qf
+qf --b--> qf
+qf --a--> qf
+qf --a--> qf
+qf --a--> qf
+qf --b--> qf
+\end{lstlisting}
+
+\textbf{Resultado:} Aceita
+
+\subsection*{2. Cadeia: \texttt{bababab}}
+
+\begin{lstlisting}
+q0 --b--> q2
+q2 --a--> q1
+q1 --b--> q1
+q1 --a--> qf
+qf --b--> qf
+qf --a--> qf
+qf --b--> qf
+\end{lstlisting}
+
+\textbf{Resultado:} Aceita 
+
+\subsection*{3. Cadeia: \texttt{bbbbbbb}}
+
+\begin{lstlisting}
+q0 --b--> q2
+q2 --b--> qf
+qf --b--> qf
+qf --b--> qf
+qf --b--> qf
+qf --b--> qf
+qf --b--> qf
+\end{lstlisting}
+
+\textbf{Resultado:} Aceita 
+
+\section*{Conclusão}
+
+Todas as cadeias analisadas foram aceitas pelo autômato, pois terminam no estado de aceitação $q_f$. O AFD é capaz de permanecer em $q_f$ indefinidamente, aceitando qualquer continuação com símbolos válidos do alfabeto $\{a, b\}$.
+
+\end{document}
