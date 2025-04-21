@@ -1,0 +1,119 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Exemplos e Exercícios de Derivação}
+\author{Giovanni Della Déa}
+
+\begin{document}
+
+\maketitle
+
+\section*{Exemplo 1 — Gramática para Números Naturais}
+
+\textbf{Gramática:}
+\begin{align*}
+N &\rightarrow D \\
+N &\rightarrow DN \\
+D &\rightarrow 0 \mid 1 \mid 2 \mid 3 \mid 4 \mid 5 \mid 6 \mid 7 \mid 8 \mid 9
+\end{align*}
+
+\textbf{Linguagem gerada:} Números naturais com um ou mais dígitos.
+
+\subsection*{Derivações:}
+\begin{itemize}
+  \item \textbf{1000}
+    \[
+    N \Rightarrow DN \Rightarrow 1N \Rightarrow 10N \Rightarrow 100N \Rightarrow 1000
+    \]
+  \item \textbf{02}
+    \[
+    N \Rightarrow DN \Rightarrow 0N \Rightarrow 02
+    \]
+  \item \textbf{5890}
+    \[
+    N \Rightarrow DN \Rightarrow 5N \Rightarrow 58N \Rightarrow 589N \Rightarrow 5890
+    \]
+  \item \textbf{3,45} — A vírgula não está no alfabeto, portanto não é aceita pela gramática.
+\end{itemize}
+
+\vspace{1em}
+As palavras \texttt{1000}, \texttt{02} e \texttt{5890} são geradas corretamente pela gramática.  
+A palavra \texttt{3,45} não é reconhecida pela gramática atual.
+
+\hrule
+
+\section*{Exemplo 2 — Gramática que gera a linguagem $\{ww \mid w \in \{a,b\}^*\}$}
+
+\textbf{Gramática:}
+\begin{align*}
+S &\rightarrow XY \mid F \\
+X &\rightarrow XaA \mid XbB \mid F \\
+Aa &\rightarrow aA \quad & Ab &\rightarrow bA \\
+AY &\rightarrow Ya \quad & BY &\rightarrow Yb \\
+Ba &\rightarrow aB \quad & Bb &\rightarrow bB \\
+Fa &\rightarrow aF \quad & Fb &\rightarrow bF \\
+FY &\rightarrow \varepsilon
+\end{align*}
+
+\textbf{Linguagem gerada:} $\{ ww \mid w \in \{a, b\}^* \}$  
+Exemplos aceitos: \texttt{abab}, \texttt{abbabb}, \texttt{aaaaaa}
+
+\subsection*{Exercícios de Derivação:}
+
+\subsubsection*{1. Palavra: \texttt{baba}}
+
+Queremos $w = ba \Rightarrow ww = baba$
+
+\begin{align*}
+S &\Rightarrow XY \\
+X &\Rightarrow XbB \Rightarrow F \\
+F &\Rightarrow bF \Rightarrow aF \Rightarrow FY \Rightarrow baba
+\end{align*}
+
+Derivação válida
+
+\subsubsection*{2. Palavra: \texttt{bbbabbba}}
+
+Tentativa com $w = bbbabb$ → $ww = bbbabbbbabb$
+
+Vamos testar $w = bbabb \Rightarrow ww = bbabbbabb$  
+\texttt{bbbabbba} parece ser palíndroma, não do tipo $ww$.
+
+Derivação impossível para $ww$
+
+\textbf{Conclusão:} Apenas \texttt{baba} é aceita pela gramática $ww$
+
+\hrule
+
+\section*{Exemplo 3 — Gramática com subpalavra $aa$ ou $bb$}
+
+\textbf{Gramática:}
+\begin{align*}
+S &\rightarrow aA \mid bB \\
+A &\rightarrow bB \mid aC \\
+B &\rightarrow aA \mid bC \\
+C &\rightarrow a \mid b \mid aC \mid bC \mid \varepsilon
+\end{align*}
+
+\textbf{Linguagem gerada:} $\{ w \mid w$ contém $aa$ ou $bb$ como subpalavra $\}$
+
+\subsection*{Verificação de palavras:}
+
+\begin{itemize}
+  \item \textbf{abab} → não possui $aa$ nem $bb$ →  não aceita
+  \item \textbf{aab} → possui $aa$ → aceita
+  \item \textbf{abaab} → possui $aa$ → aceita
+  \item \textbf{abb} → possui $bb$ → aceita
+  \item \textbf{babbabab} → possui $bb$ → aceita
+\end{itemize}
+
+\textbf{Conclusão:}  
+\texttt{abab} não pertence à linguagem.  
+As demais palavras são aceitas.
+
+\end{document}
