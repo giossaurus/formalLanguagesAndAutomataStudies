@@ -1,0 +1,83 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Anotações — Linguagens Formais e Autômatos}
+\author{Professores: José Rui e Thiago Augusto de Oliveira}
+\date{Aula 01 — 26 de Fevereiro de 2025}
+
+\begin{document}
+
+\maketitle
+
+\section*{Sintaxe e Semântica}
+
+\subsection*{O que é uma linguagem formal?}
+\begin{itemize}
+  \item Desenvolvida na década de 1950.
+  \item Relacionada à linguagem natural e linguagens artificiais como C, Pascal, etc.
+  \item Usada principalmente para análise léxica e análise sintática.
+  \item Exemplos: linguagens de programação, linguagens naturais, expressões matemáticas, circuitos digitais.
+\end{itemize}
+
+\subsection*{Diferença entre sintaxe e semântica}
+\textbf{Sintaxe}: disposição lógica e gramatical dos símbolos. \\
+\textbf{Semântica}: significado das expressões após análise sintática.
+
+\subsection*{Exemplos de sintaxe}
+\begin{itemize}
+  \item Corretos: \textit{José bebeu água. A = 45;}
+  \item Incorretos: \textit{Água bebeu José. 45 = A;}
+\end{itemize}
+
+\subsection*{Exemplo de ambiguidade semântica}
+\begin{itemize}
+  \item Caminho (verbo) / Caminho (substantivo)
+  \item Colher (verbo) / Colher (objeto)
+  \item Soma (inteiro / float / classe)
+\end{itemize}
+
+\section*{Conceitos Básicos}
+
+\subsection*{Alfabeto, palavras e concatenação}
+
+\begin{itemize}
+  \item Um alfabeto $\Sigma$ é um conjunto finito de símbolos.
+  \item Uma palavra $w$ é uma sequência de símbolos de $\Sigma$.
+  \item Exemplo: $\Sigma = \{a,b\}$, $w = abcb \Rightarrow |w| = 4$
+  \item Operações sobre palavras: concatenação, prefixo, sufixo, subpalavra.
+\end{itemize}
+
+\section*{Gramática Formal}
+
+\subsection*{Definição}
+Uma gramática $G$ é uma tupla $G = (V, T, P, S)$, com:
+\begin{itemize}
+  \item $V$: variáveis (não-terminais)
+  \item $T$: terminais
+  \item $P$: regras de produção
+  \item $S$: símbolo inicial
+\end{itemize}
+
+\subsection*{Exemplo de gramática para números (243)}
+
+\begin{align*}
+  N &\rightarrow D \\
+  N &\rightarrow DN \\
+  D &\rightarrow 0|1|2|3|4|5|6|7|8|9
+\end{align*}
+
+Derivação para $243$:
+
+\[
+N \Rightarrow DN \Rightarrow 2N \Rightarrow 2DN \Rightarrow 24N \Rightarrow 24D \Rightarrow 243
+\]
+
+\end{document}
